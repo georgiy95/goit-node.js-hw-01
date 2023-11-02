@@ -4,7 +4,6 @@ const contactsPath = path.join(__dirname, "db/contacts.json");
 const { nanoid } = require("nanoid");
 
 async function listContacts() {
-  // ...твій код. Повертає масив контактів.
   try {
     return JSON.parse(await fs.readFile(contactsPath));
   } catch (error) {
@@ -19,7 +18,6 @@ async function getContactById(contactId) {
   } catch (error) {
     console.log(error.message);
   }
-  // ...твій код. Повертає об'єкт контакту з таким id. Повертає null, якщо контакт з таким id не знайдений.
 }
 
 async function removeContact(contactId) {
@@ -35,7 +33,6 @@ async function removeContact(contactId) {
   } catch (error) {
     console.log(error.message);
   }
-  // ...твій код. Повертає об'єкт видаленого контакту. Повертає null, якщо контакт з таким id не знайдений.
 }
 
 async function addContact(name, email, phone) {
@@ -49,7 +46,6 @@ async function addContact(name, email, phone) {
   } catch (error) {
     console.log(error.message);
   }
-  // ...твій код. Повертає об'єкт доданого контакту.
 }
 
 module.exports = {

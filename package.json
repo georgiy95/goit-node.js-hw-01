@@ -7,7 +7,7 @@
     "start": "node index",
     "dev": "nodemon index"
   },
-  "author": "",
+  "author": "georgiy95",
   "license": "ISC",
   "description": "",
   "dependencies": {
