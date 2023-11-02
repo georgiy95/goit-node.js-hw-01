@@ -1,35 +1,40 @@
-const { Command } = require('commander');
+const { log } = require("console");
+const contacts = require("./contacts");
+const { Command } = require("commander");
 const program = new Command();
-const contacts = require('./contacts');
 
 program
-  .option('-a, --action <type>', 'choose action')
-  .option('-i, --id <type>', 'user id')
-  .option('-n, --name <type>', 'user name')
-  .option('-e, --email <type>', 'user email')
-  .option('-p, --phone <type>', 'user phone');
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
 
 program.parse(process.argv);
 
 const argv = program.opts();
 
-const invokeAction = async ({ action, id, name, email, phone }) => {
+async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
-    case 'list':
-      console.table(await contacts.listContacts());
+    case "list":
+      // ...
+      console.log(await contacts.listContacts());
       break;
-    case 'get':
-      console.table(await contacts.getContactById(id));
+    case "get":
+      // ... idR
+      console.log(await contacts.getContactById(id));
       break;
-    case 'add':
-      console.table(await contacts.addContact({ name, email, phone }));
+    case "add":
+      // ... name email phone
+      console.log(await contacts.addContact(name, email, phone));
       break;
-    case 'remove':
-      console.table(await contacts.removeContact(id));
+    case "remove":
+      // ... id
+      console.log(await contacts.removeContact(id));
       break;
     default:
-      console.warn('\x1B[31m Unknown action type!');
+      console.warn("\x1B[31m Unknown action type!");
   }
-};
+}
 
 invokeAction(argv);
